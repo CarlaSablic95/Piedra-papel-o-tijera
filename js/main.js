@@ -1,108 +1,88 @@
-// Piedra, papel o tijera
-alert("Piedra, papel o tijera\n¡A jugar! ✊✋✌️");
+alert("Piedra, papel o tijera\n¡A JUGAR! ✊✋✌️");
 
-// VARIABLES GLOBALES
-    // En estas variables guardarán el nombre de los jugadores
-    let primerJugador =  "";
-    let segundoJugador = "";
-    
-    // Ambas variables contienen lo que los usuarios elijan: Piedra, papel o tijera
-    let opcionJugador1;
-    let opcionJugador2;
-    
-    // Función que valida el nombre ingresado por los usuarios
- function validarNombre(nombre, nombreAleatorio) {
-    while(nombre === "" || nombre === null) {
-       return nombreAleatorio;
-    }
-    
-    return nombre;
+let aliasJugador = prompt("Ingresá tu alias").toLowerCase();
+
+while (aliasJugador == "" || aliasJugador == null) {
+  aliasJugador = prompt("Ingresá tu alias").toLowerCase();
 }
 
-// Jugador 1 ingresa su nombre y si no
-primerJugador = prompt("Jugador 1:\nIngresar nombre");
-primerJugador = validarNombre(primerJugador, "Jugador 1");
+let opciones = ["piedra", "papel", "tijera"];
+let opcionJugador;
+let opcionPC;
 
+class Jugador {
+  constructor(alias) {
+    this.alias = alias;
+  }
 
-segundoJugador = prompt("Jugador 2:\nIngresar nombre");
-segundoJugador = validarNombre(segundoJugador, "Jugador 2");
+  elegirOpcion() {
+    opcionJugador = prompt(
+      jugador.alias + " elegí piedra, papel o tijera"
+    ).toLowerCase();
 
-
-
-    // El 1er jugador empieza elige una de las 3 opciones:
-    function jugadorUno() {
-        opcionJugador1 = prompt(primerJugador + "\nElegí Piedra, papel o tijera").toLowerCase();
-        switch(opcionJugador1) {
-            case "piedra":
-             alert(primerJugador + " elegiste PIEDRA ✊");
-             break;
-
-            case "papel":
-             alert(primerJugador + " elegiste PAPEL ✋");
-             break;
-
-            case "tijera":
-             alert(primerJugador + " elegiste TIJERA ✌️");
-             break;
-
-            default:
-              alert("Elección inválida 🤨");
-              opcionJugador1 = prompt(primerJugador + "\nElegí Piedra, papel o tijera").toLowerCase();
-            break;
-        }
+    while (!opciones.includes(opcionJugador)) {
+      opcionJugador = prompt(
+        "Elección inválida 🤨 \nElegí nuevamente: piedra, papel o tijera"
+      ).toLowerCase();
     }
-
-    jugadorUno();
-
-
-function jugadorDos() { 
-    opcionJugador2 = prompt(segundoJugador + "\nElegí Piedra, papel o tijera").toLowerCase();
-    switch(opcionJugador2) {
-        case "piedra":
-            alert(segundoJugador + " eligió PIEDRA ✊");
-         break;
-
-        case "papel":
-          alert(segundoJugador + " eligió PAPEL ✋");
-         break;
-
-        case "tijera":
-         alert(segundoJugador + " eligió TIJERA ✌️");
-         break;
-
-         default:
-            alert("Elección inválida 🤨");
-            opcionJugador2 = prompt(segundoJugador + "\nElegí Piedra, papel o tijera").toLowerCase();
-            break;
-    }
-  
+    alert(jugador.alias + " elegiste " + opcionJugador);
+    return opcionJugador;
+  }
 }
 
-jugadorDos();
+const jugador = new Jugador(aliasJugador);
 
-function jugar() {
-    if(opcionJugador1 === opcionJugador2) {
-        alert("¡Hay empate! 😬");
-    } else if((opcionJugador1 === "papel" && opcionJugador2 === "piedra") || (opcionJugador1 === "tijera" && opcionJugador2 === "papel") || (opcionJugador1 === "piedra" && opcionJugador2 === "tijera")) {
-        // return alert(primerJugador + " ganaste 😎");
-        return alert("Ganaste! 😎");
+const juegaPC = () => {
+  opcionPC = opciones[Math.floor(Math.random() * opciones.length)];
+  return alert("PC eligió " + opcionPC);
+};
+
+const jugarPartida = () => {
+  let puntosJugador = 0;
+  let puntosPC = 0;
+
+  for (let i = 1; i <= 3; i++) {
+    alert("TURNO " + i);
+
+    jugador.elegirOpcion();
+    juegaPC();
+
+    if (opcionJugador === opcionPC) {
+      alert("¡EMPATE! 😬");
+    } else if (
+      (opcionJugador === "piedra" && opcionPC === "tijera") ||
+      (opcionJugador === "papel" && opcionPC === "piedra") ||
+      (opcionJugador === "tijera" && opcionPC === "papel")
+    ) {
+      puntosJugador += 5;
+      alert(jugador.alias + ": " + puntosJugador + " puntos");
     } else {
-        // return alert(segundoJugador + " ganaste 😎");
-        return alert("Perdiste! 😢");
+      puntosPC += 5;
+      alert("PC: " + puntosPC + " puntos");
     }
-}
+  }
 
-jugar();
+  if (puntosJugador > puntosPC) {
+    alert(jugador.alias + " ganasteee 😎🏆");
+    alert("GAME OVER" + "\n" + jugador.alias + ": " + puntosJugador + " puntos \n" + "PC: " + puntosPC + " puntos");
+  } else if (puntosJugador === puntosPC) {
+    alert("EMPATE" + "\n" + jugador.alias + ": " + puntosJugador + " puntos \n" + "PC: " + puntosPC + " puntos");
+  } else {
+    alert(jugador.alias + " perdiste 😣");
+    alert("GAME OVER" + "\n" + jugador.alias + ": " + puntosJugador + " puntos \n" + "PC: " + puntosPC + " puntos");
+  }
 
-function volverAJugar() {
-    let respuesta = prompt("¿Querés volver a jugar?\n SÍ \n NO").toLowerCase();
-    if(respuesta == "si") {
-        jugadorUno();
-        jugadorDos();
-        jugar();
+  const nuevaPartida = () => {
+    let respuesta = prompt("¿Jugás nuevamente? \n SÍ \n NO").toLowerCase();
+
+    if (respuesta == "si") {
+      jugarPartida();
     } else {
-        alert("¡Gracias por jugar! 😊");
+      alert("¡Gracias por jugar " + jugador.alias + " 😊 !");
     }
-}
+  };
 
-volverAJugar();
+  nuevaPartida();
+};
+
+jugarPartida();
