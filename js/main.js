@@ -21,9 +21,7 @@ class Jugador {
     ).toLowerCase();
 
     while (!opciones.includes(opcionJugador)) {
-      opcionJugador = prompt(
-        "Elección inválida 🤨 \nElegí nuevamente: piedra, papel o tijera"
-      ).toLowerCase();
+      opcionJugador = prompt("Elección inválida 🤨 \nElegí nuevamente: piedra, papel o tijera").toLowerCase();
     }
     alert(jugador.alias + " elegiste " + opcionJugador);
     return opcionJugador;
