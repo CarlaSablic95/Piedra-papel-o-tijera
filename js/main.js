@@ -20,7 +20,7 @@ class Jugador {
       jugador.alias + " elegí piedra, papel o tijera"
     ).toLowerCase();
 
-    while(!opciones.some(el => el == opcionJugador)) {
+    while(!opciones.some((opcion) => opcion == opcionJugador)) {
       opcionJugador = prompt("Elección inválida 🤨 \nElegí nuevamente: piedra, papel o tijera").toLowerCase();
     }
     alert(jugador.alias + " elegiste " + opcionJugador);
