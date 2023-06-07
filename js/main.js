@@ -10,8 +10,8 @@ let opciones = ["piedra", "papel", "tijera"];
 let opcionJugador;
 let opcionPC;
 
-let puntosJugador = 0;
-let puntosPC = 0;
+let puntosJugador;
+let puntosPC;
 
 class Jugador {
   constructor(alias) {
@@ -39,6 +39,8 @@ const juegaPC = () => {
 };
 
 const jugarPartida = () => {
+  puntosJugador = 0;
+  puntosPC = 0;
   for (let i = 1; i <= 3; i++) {
     alert("TURNO " + i);
 
