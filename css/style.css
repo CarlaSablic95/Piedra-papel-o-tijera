@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+body {
+    font-family: 'Play', sans-serif;
+    background-color: #D0DFFF;
+}
+
+main {
+    height: 100vh;
+}
+
+#eleccion {
+    height: 9vh;
+}
+
+.puntos {
+    margin-bottom: -1rem;
+    z-index: 1;
+    padding: 1rem 1.5rem;
+}
+
+.bg-puntos {
+    background: #e4c5f9;
+    border-radius: 1rem;
+}
+
+/* Colores */
+.bg-button {
+    background-color: #5008a4;
+}
+
+.bg-button:hover {
+    color: #5008a4 !important;
+    border: 2px #5008a4 solid;
+    background-color: #ffffff !important;
+}
+
+.form-control:focus {
+    color: #5008a4;
+    border-color: transparent !important;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%);
+}
+
+/* Imagenes */
+.icono {
+    width: 100px;
+}
+
+
+.img-opciones {
+    width: 50px;
+}
+
+#card-pc > .card {
+    height: 245px;
+}
