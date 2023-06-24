@@ -23,9 +23,7 @@ class Jugador {
         btnEleccion.addEventListener("click", (e) => {
           btnEleccionUsuario = e.currentTarget.id;
           localStorage.setItem("eleccionUsuario", btnEleccionUsuario);
-        //   mostrarEleccion.innerHTML = `<p class="fw-bold">Elegiste: ${btnEleccionUsuario}</p>`;
           mostrarEleccion.innerHTML = `<p class="fw-bold">Elegiste: ${localStorage.getItem("eleccionUsuario")}</p>`;
-          
           callback(btnEleccionUsuario);
         })
       });
