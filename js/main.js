@@ -1,98 +1,32 @@
-let btnOK = document.getElementById("btn-ok");
-let contenedorInput = document.getElementById("contenedor-input");
-
-let aliasJugador = document.getElementById("alias");
-let errorAlias = document.getElementById("error-alias");
-let contenedorAlias = document.getElementById("contenedor-alias");
-
-let ptoJugador = document.getElementById("pto-jugador");
-let ptoPC = document.getElementById("pto-pc");
-
-
-let botonesEleccion = document.querySelectorAll(".btn-eleccion");
-let btnEleccionUsuario;
-let mostrarEleccion = document.getElementById("mostrar-eleccion");
-
-
-
-let opciones = ["piedra", "papel", "tijera"];
-let opcionPC;
-let mostrarEleccionPC = document.getElementById("mostrar-eleccion-pc");
-
-let contenedorJuego = document.getElementById("contenedor-juego");
-
-let botonesEleccionPC = document.getElementById("img-opcion-pc");
-
-
-
 let puntosJugador = 0;
 let puntosPC = 0;
-let anunciarGanador = document.getElementById("anunciar-ganador");
 
-let btnReiniciarJuego = document.getElementById("btn-reinicio");
-
-class Jugador {
-  constructor(alias) {
-    this.alias = alias;
-  }
-
-  ingresarAlias() {
-    btnOK.addEventListener("click", () => {
-      if ((aliasJugador.value == "") || (aliasJugador.value == null)) {
-        errorAlias.innerHTML = `<p class="text-danger fw-bold">¡Para poder jugar debés ingresar un alias!</p>`
-      } else {
-        contenedorAlias.innerHTML = `<h2>${aliasJugador.value.toLowerCase()}</h2>`;
-        localStorage.setItem("alias", aliasJugador.value);
-        errorAlias.innerHTML = "";
-        contenedorInput.innerHTML = "";
-        contenedorJuego.classList.remove("d-none");
-      }
-    });
-  }
-
-  elegirOpcion(callback) {
-    botonesEleccion.forEach(btnEleccion => {
-      btnEleccion.addEventListener("click", (e) => {
-        btnEleccionUsuario = e.currentTarget.id;
-        localStorage.setItem("eleccionUsuario", btnEleccionUsuario);
-        mostrarEleccion.innerHTML = `<p class="fw-bold">Elegiste: ${btnEleccionUsuario}</p>`;
-        callback(btnEleccionUsuario);
-      })
-    });
-  }
-}
-
-const jugador = new Jugador(aliasJugador.value);
-jugador.ingresarAlias();
-
-
-// ELECCION PC
 function juegaPC() {
-  opcionPC = opciones[Math.floor(Math.random() * 3)];
-  switch (opcionPC) {
+  eleccionPC = opciones[Math.floor(Math.random() * 3)];
+  switch (eleccionPC) {
     case "piedra":
-      botonesEleccionPC.src = `./assets/img/${opcionPC}.png`;
-      localStorage.setItem("opcionPC", opcionPC);
-      mostrarEleccionPC.innerHTML = `<p class="fw-bold">La computadora eligió: ${opcionPC}</p>`;
+      botonesEleccionPC.src = `./assets/img/${eleccionPC}.png`;
+      localStorage.setItem("eleccionPC", eleccionPC);
+      mostrarEleccionPC.innerHTML = `<p class="fw-bold">La computadora eligió: ${eleccionPC}</p>`;
       break;
 
     case "papel":
-      botonesEleccionPC.src = `./assets/img/${opcionPC}.png`;
-      localStorage.setItem("opcionPC", opcionPC);
-      mostrarEleccionPC.innerHTML = `<p class="fw-bold">La computadora eligió: ${opcionPC}</p>`;
+      botonesEleccionPC.src = `./assets/img/${eleccionPC}.png`;
+      localStorage.setItem("eleccionPC", eleccionPC);
+      mostrarEleccionPC.innerHTML = `<p class="fw-bold">La computadora eligió: ${eleccionPC}</p>`;
       break;
 
     case "tijera":
-      botonesEleccionPC.src = `./assets/img/${opcionPC}.png`;
-      localStorage.setItem("opcionPC", opcionPC);
-      mostrarEleccionPC.innerHTML = `<p class="fw-bold">La computadora eligió: ${opcionPC}</p>`;
+      botonesEleccionPC.src = `./assets/img/${eleccionPC}.png`;
+      localStorage.setItem("eleccionPC", eleccionPC);
+      mostrarEleccionPC.innerHTML = `<p class="fw-bold">La computadora eligió: ${eleccionPC}</p>`;
       break;
 
     default:
       break;
   }
 
-  return opcionPC;
+  return eleccionPC;
 }
 
 
@@ -105,9 +39,11 @@ const jugadas = [
 
 
 const compararJugadas = () => {
-  let partidaGanada = jugadas.some((jugada) => jugada.ganador == btnEleccionUsuario && jugada.perdedor == opcionPC);
-
-  if (partidaGanada) {
+  let partidaGanada = jugadas.some((jugada) => jugada.ganador == btnEleccionUsuario && jugada.perdedor == eleccionPC);
+  if(btnEleccionUsuario === eleccionPC) {
+    puntosJugador;
+    puntosPC;
+  } else if (partidaGanada) {
     puntosJugador++;
     localStorage.setItem("puntosJugador", puntosJugador);
     ptoJugador.innerHTML = `<h5 class="fw-bolder mb-0">${puntosJugador}</h5>`;
@@ -164,5 +100,5 @@ btnReiniciarJuego.addEventListener("click", () => {
   });
   botonesEleccionPC.classList.remove("opacity-50");
 
-  btnReiniciarJuego.classList.add("d-none", "btn", "btn-lg", "bg-button", "text-white");
+  btnReiniciarJuego.classList.add("d-none");
 });
