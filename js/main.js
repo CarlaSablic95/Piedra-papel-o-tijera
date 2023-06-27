@@ -93,3 +93,18 @@ btnReiniciarJuego.addEventListener("click", () => {
 
   botonesEleccionPC.src = "";
 });
+
+// Abrir el modal con instrucciones del juego
+btnInfo.addEventListener("click", () => {
+  Swal.fire({
+    position: 'top-end',
+    title: 'Cómo jugar',
+    text: `Instrucciones: \n
+    🔸Cada jugador tiene su turno para elegir piedra, papel o tijera \n\n
+    🔸Cada jugador tiene su turno para elegir piedra, papel o tijera \n\n
+    🔸Cada jugador tiene su turno para elegir piedra, papel o tijera
+    
+    `,
+    showConfirmButton: true, 
+  })
+});

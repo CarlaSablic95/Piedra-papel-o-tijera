@@ -1,3 +1,4 @@
+let btnInfo = document.getElementById("btn-info");
 let btnJugar = document.getElementById("btn-jugar");
 let btnOK = document.getElementsByClassName("swal2-input");
 let contenedorInput = document.getElementById("contenedor-input");

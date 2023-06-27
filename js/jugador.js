@@ -18,25 +18,25 @@ class Jugador {
   //   });
   // }
 
-  ingresarAlias() {
-    const { value: text } =  Swal.fire({
-      title: 'Alias',
-      input: 'text',
-      inputPlaceholder: 'Alias',
-      inputValidator: (value) => {
-      return new Promise((resolve) => {
-        if (value === '') {
-          resolve('¡Para poder jugar debés ingresar un alias!');
-        } else {
-          const lowerCaseAlias = aliasJugador.value.toLowerCase();
-          localStorage.setItem("alias", lowerCaseAlias);
-          contenedorAlias.innerHTML = `<h2>${localStorage.getItem("alias")}</h2>`;
-          resolve();
-        }
-      })
-    }
-    });
-  }
+  // ingresarAlias() {
+  //   const { value: text } =  Swal.fire({
+  //     title: 'Alias',
+  //     input: 'text',
+  //     inputPlaceholder: 'Alias',
+  //     inputValidator: (value) => {
+  //     return new Promise((resolve) => {
+  //       if (value === '') {
+  //         resolve('¡Para poder jugar debés ingresar un alias!');
+  //       } else {
+  //         const lowerCaseAlias = aliasJugador.value.toLowerCase();
+  //         localStorage.setItem("alias", lowerCaseAlias);
+  //         contenedorAlias.innerHTML = `<h2>${localStorage.getItem("alias")}</h2>`;
+  //         resolve();
+  //       }
+  //     })
+  //   }
+  //   });
+  // }
 
   elegirOpcion(callback) {
     botonesEleccion.forEach((btnEleccion) => {
@@ -52,5 +52,5 @@ class Jugador {
   }
 }
 
-const jugador = new Jugador(aliasJugador.value);
-jugador.ingresarAlias();
+const jugador = new Jugador(aliasJugador);
+// jugador.ingresarAlias();
