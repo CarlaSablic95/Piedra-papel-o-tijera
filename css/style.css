@@ -13,25 +13,36 @@ main {
     height: 9vh;
 }
 
+#btn-info {
+    top: 5px;
+    right: 10px;
+}
+
 .puntos {
     margin-bottom: -1rem;
     z-index: 1;
     padding: 1rem 1.5rem;
+    background: linear-gradient(90deg, #7af3f8 0%, #9594e9 100%);
+    /* border: 3px solid;
+    border-image: linear-gradient(90deg, rgb(248, 122, 176) 0%, rgba(195,148,233,1) 100%) 1; */
 }
 
 .bg-puntos {
-    background: #e4c5f9;
+    background: linear-gradient(90deg, #7af3f8 0%, #9594e9 100%);
     border-radius: 1rem;
+    letter-spacing: 1px;
 }
 
 /* Colores */
 .bg-button {
-    background-color: #5008a4;
+    background: linear-gradient(90deg, #7af3f8 0%, #9594e9 100%);
+    border: none;
 }
+
 
 .bg-button:hover {
     color: #5008a4 !important;
-    border: 2px #5008a4 solid;
+    border: 2px linear-gradient(90deg, rgb(248, 122, 176) 0%, rgba(195,148,233,1) 100%) solid;
     background-color: #ffffff !important;
 }
 
@@ -41,9 +52,15 @@ main {
     box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%);
 }
 
+.btn-eleccion:active, 
+.btn-eleccion:focus {
+    border: 3px solid linear-gradient(90deg, rgb(122, 248, 158) 0%, rgba(195,148,233,1) 100%);
+    padding: 7px;
+}
+
 /* Imagenes */
 .icono {
-    width: 100px;
+    width: 80px;
 }
 
 
