@@ -99,11 +99,11 @@ btnInfo.addEventListener("click", () => {
   Swal.fire({
     position: 'top-end',
     title: 'Cómo jugar',
-    text: `Instrucciones: \n
-    🔸Cada jugador tiene su turno para elegir piedra, papel o tijera \n\n
-    🔸Cada jugador tiene su turno para elegir piedra, papel o tijera \n\n
-    🔸Cada jugador tiene su turno para elegir piedra, papel o tijera
-    
+    html: `
+    <p class="mb-1">🔹Cada jugador tiene su turno para elegir piedra, papel o tijera.</p>
+    <p class="mb-1">🔹Piedra vence a tijera, papel vence a piedra y tijera vence a papel.</p>
+    <p class="mb-1">🔹En cada turno los jugadores ganan 1 punto.</p>
+    <p class="mb-1">🔹Quien primero obtenga los 5 puntos, <strong>GANA 🏆</strong></p>
     `,
     showConfirmButton: true, 
   })

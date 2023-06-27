@@ -98,22 +98,22 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     
-    //  const { value: text } =  Swal.fire({
-    //   title: 'Alias',
-    //   input: 'text',
-    //   inputPlaceholder: 'Alias',
-    //   inputValidator: (value) => {
-    //   return new Promise((resolve) => {
-    //     if (value === '') {
-    //       resolve('¡Para poder jugar debés ingresar un alias!');
-    //     } else {
-    //       localStorage.setItem("alias", value);
-    //       contenedorAlias.innerHTML = `<h2>${localStorage.getItem("alias")}</h2>`;
-    //       resolve();
-    //     }
-    //   })
-    // }
-    // });
+     const { value: text } =  Swal.fire({
+      title: 'Alias',
+      input: 'text',
+      inputPlaceholder: 'Alias',
+      inputValidator: (value) => {
+      return new Promise((resolve) => {
+        if (value === '') {
+          resolve('¡Para poder jugar debés ingresar un alias!');
+        } else {
+          localStorage.setItem("alias", value);
+          contenedorAlias.innerHTML = `<h2>${localStorage.getItem("alias")}</h2>`;
+          resolve();
+        }
+      })
+    }
+    });
   </script>
 </body>
 
