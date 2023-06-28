@@ -20,8 +20,8 @@ const jugadas = [
   { ganador: "tijera", perdedor: "papel" },
 ];
 
-const compararJugadas = () => {
-  let partidaGanada = jugadas.some(
+const compararJugadas = (partidaGanada) => {
+   partidaGanada = jugadas.some(
     (jugada) =>
       jugada.ganador == btnEleccionUsuario && jugada.perdedor == eleccionPC
   );
@@ -100,9 +100,10 @@ btnInfo.addEventListener("click", () => {
     position: 'top-end',
     title: 'Cómo jugar',
     html: `
-    <p class="mb-1">🔹Cada jugador tiene su turno para elegir piedra, papel o tijera.</p>
-    <p class="mb-1">🔹Piedra vence a tijera, papel vence a piedra y tijera vence a papel.</p>
+    <p class="mb-1">🔹Cada jugador tiene su turno para elegir: <br><strong>piedra, papel o tijera.</strong></p>
+    <p class="mb-1">🔹<strong>Jugadas:</strong> Piedra vence a tijera, papel vence a piedra y tijera vence a papel.</p>
     <p class="mb-1">🔹En cada turno los jugadores ganan 1 punto.</p>
+    <p class="mb-1">🔹En caso de empate, ninguno de los jugadores gana puntos.</p>
     <p class="mb-1">🔹Quien primero obtenga los 5 puntos, <strong>GANA 🏆</strong></p>
     `,
     showConfirmButton: true, 

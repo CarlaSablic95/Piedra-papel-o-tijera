@@ -55,7 +55,7 @@ main {
 
 .btn-eleccion:active, 
 .btn-eleccion:focus {
-    border: 3px solid linear-gradient(90deg, rgb(122, 248, 158) 0%, rgba(195,148,233,1) 100%);
+    border: 3px solid rgb(122, 248, 158);
     padding: 7px;
 }
 
@@ -71,4 +71,15 @@ main {
 
 #card-pc > .card {
     height: 245px;
+}
+
+/* Sweet alert */
+
+div:where(.swal2-container).swal2-backdrop-show, div:where(.swal2-container).swal2-noanimation {
+    background: rgba(0,0,0,.4);
+    backdrop-filter: blur(25px);
+}
+
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+    background-color: #c13ba1 !important;
 }
