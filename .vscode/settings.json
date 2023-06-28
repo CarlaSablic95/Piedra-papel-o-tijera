@@ -1,3 +1,4 @@
 {
-    "livePreview.defaultPreviewPath": "/juego.html"
+    "livePreview.defaultPreviewPath": "/juego.html",
+    "liveServer.settings.port": 5501
 }
