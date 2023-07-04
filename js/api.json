@@ -1,0 +1,5 @@
+[
+    {"ganador":"piedra", "perdedor": "tijera"},
+    {"ganador":"papel", "perdedor": "piedra"},
+    {"ganador":"tijera", "perdedor": "papel"}
+]

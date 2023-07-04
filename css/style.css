@@ -2,10 +2,9 @@
 
 body {
     font-family: 'Play', sans-serif;
-    background-color: #D0DFFF;
 }
 
-main {
+.main {
     height: 100vh;
 }
 
@@ -17,32 +16,39 @@ main {
     top: 5px;
     right: 10px;
     border-color: transparent;
+    z-index: 2;
+}
+
+#contenedor-rondas {
+    border-end-end-radius: 20px;
+    border-end-start-radius: 20px;
 }
 
 .puntos {
     margin-bottom: -1rem;
     z-index: 1;
     padding: 1rem 1.5rem;
-    background: linear-gradient(90deg, #7af3f8 0%, #9594e9 100%);
-    /* border: 3px solid;
-    border-image: linear-gradient(90deg, rgb(248, 122, 176) 0%, rgba(195,148,233,1) 100%) 1; */
+    background: linear-gradient(90deg, #87e6f3 0%, #adadf1 100%);
 }
 
 .bg-puntos {
-    background: linear-gradient(90deg, #7af3f8 0%, #9594e9 100%);
+    background: linear-gradient(90deg, #87e6f3 0%, #adadf1 100%);
     border-radius: 1rem;
     letter-spacing: 1px;
 }
 
-/* Colores */
+.bg-rondas {
+    background: linear-gradient(90deg, #87e6f3 0%, #adadf1 100%);
+}
+
 .bg-button {
-    background: linear-gradient(90deg, #7af3f8 0%, #9594e9 100%);
+    background: linear-gradient(90deg, #87e6f3 0%, #adadf1 100%);
     border: none;
 }
 
 
 .bg-button:hover {
-    color: #5008a4 !important;
+    color: #2d2d2d !important;
     border: 2px linear-gradient(90deg, rgb(248, 122, 176) 0%, rgba(195,148,233,1) 100%) solid;
     background-color: #ffffff !important;
 }
@@ -69,8 +75,20 @@ main {
     width: 50px;
 }
 
-#card-pc > .card {
-    height: 245px;
+.card-pc {
+height: 100vh;
+    background-color: #dbf3ff;
+    border-radius: 0 !important;
+}
+
+.card-usuario {
+    height: 100vh;
+    background-color: #eae3fd;
+    border-radius: 0 !important;
+}
+
+#btn-reinicio, #contenedor-rondas {
+    z-index: 1;
 }
 
 /* Sweet alert */
@@ -81,5 +99,11 @@ div:where(.swal2-container).swal2-backdrop-show, div:where(.swal2-container).swa
 }
 
 div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
-    background-color: #c13ba1 !important;
+    background-color: #66b7e2 !important;
+}
+
+@media (max-width: 768px) {
+    .card-pc, .card-usuario {
+        height: 60vh;
+    }
 }
