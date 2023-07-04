@@ -1,7 +1,7 @@
 let puntosUsuario = 0;
 let puntosPC = 0;
 let rondas = 0;
-let opciones = ["piedra", "papel", "tijera"];
+const opciones = ["piedra", "papel", "tijera"];
 
 function juegaPC() {
   eleccionPC = opciones[Math.floor(Math.random() * 3)];
@@ -49,7 +49,7 @@ const definirGanador = () => {
     });
 
     Swal.fire({
-      html: `<h2> ${localStorage.getItem("alias")} ganaste esta partida 😎🏆</h2>`,
+      html: `<h2> ${localStorage.getItem("alias")} ganaste esta partida 🏆</h2>`,
       showConfirmButton: true,
       backdrop: `
       rgb(0 0 0 / 40%)
@@ -103,7 +103,7 @@ btnReiniciarJuego.addEventListener("click", () => {
   botonesEleccionPC.src = "";
 
   btnReiniciarJuego.classList.add("d-none");
-  rondasJugadas.innerHTML = `<h4>Empezar</h4>`;
+  rondasJugadas.innerHTML = `<h5 class="text-center">Rondas</h5>`;
   rondaUsuario.innerHTML = "";
   rondaPC.innerHTML = "";
 });

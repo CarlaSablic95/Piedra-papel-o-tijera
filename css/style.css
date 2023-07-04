@@ -39,7 +39,7 @@ body {
 }
 
 .bg-rondas {
-    background: linear-gradient(90deg, #87e6f3 0%, #adadf1 100%);
+    background: linear-gradient(90deg, #38d6ec 0%, #8282f6 100%);
 }
 
 .bg-button {
@@ -62,7 +62,7 @@ body {
 
 .btn-eleccion:active, 
 .btn-eleccion:focus {
-    border: 3px solid rgb(77, 183, 107) !important;
+    border: 3px solid rgb(126 134 245) !important;
     padding: 7px !important;
 }
 
@@ -100,7 +100,7 @@ div:where(.swal2-container).swal2-backdrop-show, div:where(.swal2-container).swa
 }
 
 div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
-    background-color: #66b7e2 !important;
+    background: linear-gradient(90deg, #38d6ec 0%, #8282f6 100%) !important;
 }
 
 @media (max-width: 768px) {

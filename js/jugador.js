@@ -1,13 +1,12 @@
 class Jugador {
-  constructor(alias) {
-    this.alias = alias;
+  constructor(aliasJugador) {
+    this.aliasJugador = aliasJugador;
   }
 
   elegirOpcion(callback) {
     botonesEleccion.forEach((btnEleccion) => {
       btnEleccion.addEventListener("click", (e) => {
         btnEleccionUsuario = e.currentTarget.id;
-        localStorage.setItem("eleccionUsuario", btnEleccionUsuario);
         callback(btnEleccionUsuario);
       });
     });
