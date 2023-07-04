@@ -2,6 +2,7 @@
 
 body {
     font-family: 'Play', sans-serif;
+    background: linear-gradient(90deg, #87e6f3 0%, #adadf1 100%);
 }
 
 .main {
@@ -42,7 +43,7 @@ body {
 }
 
 .bg-button {
-    background: linear-gradient(90deg, #87e6f3 0%, #adadf1 100%);
+    background: linear-gradient(90deg, #38d6ec 0%, #8282f6 100%);
     border: none;
 }
 

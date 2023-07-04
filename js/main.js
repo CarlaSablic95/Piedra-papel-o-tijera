@@ -37,7 +37,8 @@ const compararJugadas = (partidaGanada) => {
   }
 
   rondas++;
-
+  rondasJugadas.classList.remove("d-none")
+  rondasJugadas.innerHTML = `<h5 class="text-center">Ronda ${rondas}</h5>`;
 })
 };
 
