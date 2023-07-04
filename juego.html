@@ -16,7 +16,7 @@
       <img src="./assets/img/informacion.png" alt="informacion" width="30px">
     </button>
 
-    <div class="position-absolute bg-rondas p-3 w-20 d-none text-white" id="contenedor-rondas">
+    <div class="position-absolute bg-rondas p-3 w-20 d-none text-white" id="resultado-rondas">
     </div>
 
     <section class="container-fluid" id="contenedor-juego">
@@ -37,10 +37,7 @@
                 <button type="button" class="btn rounded-circle p-0 bg-transparent border-0 btn-eleccion" id="tijera">
                   <img src="./assets/img/tijera.png" alt="" class="img-opciones">
                 </button>
-              </div>
-              
-              <!-- Resultado de cada ronda (usuario) -->
-              <div id="ronda-usuario" class="mt-5"></div>
+              </div>              
             </div>
 
             <div class="card-pc col-12 col-md-6 d-flex flex-column justify-content-center align-items-center p-5">
@@ -51,8 +48,6 @@
               <div class="d-flex justify-content-center align-items-center gap-2" id="contenedor-opcion-pc">
                 <img src="" alt="" class="img-opciones" id="img-opcion-pc">
               </div>
-              <!-- Resultado de cada ronda (PC) -->
-              <div id="ronda-pc" class="mt-5"></div>
             </div>
 
         <div class="text-center p-3 d-flex position-absolute">
@@ -76,22 +71,22 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     
-     const { value: text } =  Swal.fire({
-      title: 'Alias',
-      input: 'text',
-      inputPlaceholder: 'Alias',
-      inputValidator: (value) => {
-      return new Promise((resolve) => {
-        if (value === '') {
-          resolve('¡Para poder jugar debés ingresar un alias!');
-        } else {
-          localStorage.setItem("alias", value);
-          contenedorAlias.innerHTML = `<h2>${localStorage.getItem("alias")}</h2>`;
-          resolve();
-        }
-      })
-    }
-    });
+    //  const { value: text } =  Swal.fire({
+    //   title: 'Alias',
+    //   input: 'text',
+    //   inputPlaceholder: 'Alias',
+    //   inputValidator: (value) => {
+    //   return new Promise((resolve) => {
+    //     if (value === '') {
+    //       resolve('¡Para poder jugar debés ingresar un alias!');
+    //     } else {
+    //       localStorage.setItem("alias", value);
+    //       contenedorAlias.innerHTML = `<h2>${localStorage.getItem("alias")}</h2>`;
+    //       resolve();
+    //     }
+    //   })
+    // }
+    // });
   </script>
 </body>
 </html>

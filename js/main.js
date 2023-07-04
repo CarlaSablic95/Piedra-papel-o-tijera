@@ -1,6 +1,5 @@
 let puntosUsuario = 0;
 let puntosPC = 0;
-let rondas = 0;
 const opciones = ["piedra", "papel", "tijera"];
 
 function juegaPC() {
@@ -13,33 +12,29 @@ function juegaPC() {
 
 const compararJugadas = (partidaGanada) => {
   fetch("./js/api.json")
-  .then((respuesta) => respuesta.json())
-  .then((jugadas) => {
+    .then((respuesta) => respuesta.json())
+    .then((jugadas) => {
       partidaGanada = jugadas.some((jugada) => jugada.ganador == btnEleccionUsuario && jugada.perdedor == eleccionPC);
- 
-  if (btnEleccionUsuario == eleccionPC) {
-    puntosUsuario;
-    puntosPC;
-    rondaUsuario.innerHTML = `<p class="fw-bold">Empate 😬</p>`;
-    rondaPC.innerHTML = `<p class="fw-bold">Empate 😬</p>`;
-  } else if (partidaGanada) {
-    puntosUsuario++;
-    localStorage.setItem("puntos usuario", puntosUsuario);
-    ptoUsuario.innerHTML = `<h5 class="fw-bolder mb-0">${localStorage.getItem("puntos usuario")}</h5>`;
-    rondaUsuario.innerHTML = `<p class="fw-bold">Ganaste esta ronda 😎</p>`;
-    rondaPC.innerHTML = `<p class="fw-bold">PC perdió esta ronda 💥</p>`;
-  } else {
-    puntosPC++;
-    localStorage.setItem("puntos pc", puntosPC);
-    ptoPC.innerHTML = `<h5 class="fw-bolder mb-0">${localStorage.getItem("puntos pc")}</h5>`;
-    rondaUsuario.innerHTML = `<p class="fw-bold">Perdiste esta ronda 😭</p>`;
-    rondaPC.innerHTML = `<p class="fw-bold">PC ganó esta ronda 🦾</p>`;
-  }
 
-  rondas++;
-  rondasJugadas.classList.remove("d-none")
-  rondasJugadas.innerHTML = `<h5 class="text-center">Ronda ${rondas}</h5>`;
-})
+      if (btnEleccionUsuario == eleccionPC) {
+        puntosUsuario;
+        puntosPC;
+        resultadoRonda.classList.remove("d-none");
+        resultadoRonda.innerHTML = `<p class="fw-bold mb-0 text-center">Empate 😬</p>`;
+      } else if (partidaGanada) {
+        puntosUsuario++;
+        localStorage.setItem("puntos usuario", puntosUsuario);
+        ptoUsuario.innerHTML = `<h5 class="fw-bolder mb-0 text-center">${localStorage.getItem("puntos usuario")}</h5>`;
+        resultadoRonda.classList.remove("d-none");
+        resultadoRonda.innerHTML = `<p class="fw-bold mb-0 text-center">Ganaste esta ronda 😎</p>`;
+      } else {
+        puntosPC++;
+        localStorage.setItem("puntos pc", puntosPC);
+        ptoPC.innerHTML = `<h5 class="fw-bolder mb-0">${localStorage.getItem("puntos pc")}</h5>`;
+        resultadoRonda.classList.remove("d-none");
+        resultadoRonda.innerHTML = `<p class="fw-bold mb-0">PC ganó esta ronda 🦾</p>`;
+      };  
+    })
 };
 
 const definirGanador = () => {
@@ -47,9 +42,11 @@ const definirGanador = () => {
     botonesEleccion.forEach((btnEleccion) => {
       btnEleccion.classList.add("disabled");
     });
+    botonesEleccionPC.classList.add("opacity-50");
+    btnReiniciarJuego.classList.remove("d-none");
 
     Swal.fire({
-      html: `<h2> ${localStorage.getItem("alias")} ganaste esta partida 🏆</h2>`,
+      html: `<h2> ${localStorage.getItem("alias")} ganaste la partida 🏆</h2>`,
       showConfirmButton: true,
       backdrop: `
       rgb(0 0 0 / 40%)
@@ -57,28 +54,27 @@ const definirGanador = () => {
       left top`
     });
 
+
+  } else if (puntosPC === 5) {
+    botonesEleccion.forEach((btnEleccion) => {
+      btnEleccion.classList.add("disabled");
+    });
     botonesEleccionPC.classList.add("opacity-50");
     btnReiniciarJuego.classList.remove("d-none");
 
-  } else if (puntosPC === 5) {
     Swal.fire({
-      html: `<h2>PC ganó esta partida 😭</h2>`,
+      html: `<h2>PC ganó la partida 😭</h2>`,
       showConfirmButton: true,
       backdrop: `
       rgb(0 0 0 / 40%)
       left top`
     })
-    botonesEleccion.forEach((btnEleccion) => {
-      btnEleccion.classList.add("disabled");
-    });
 
-    botonesEleccionPC.classList.add("opacity-50");
-    btnReiniciarJuego.classList.remove("d-none");
   }
 };
 
 const jugarPartida = () => {
-    jugador.elegirOpcion((btnEleccionUsuario) => {
+  jugador.elegirOpcion((btnEleccionUsuario) => {
     juegaPC();
     compararJugadas();
     definirGanador();
@@ -91,7 +87,6 @@ jugarPartida();
 btnReiniciarJuego.addEventListener("click", () => {
   puntosUsuario = 0;
   puntosPC = 0;
-  rondas = 0;
 
   ptoUsuario.innerHTML = "0";
   ptoPC.innerHTML = "0";
@@ -101,11 +96,9 @@ btnReiniciarJuego.addEventListener("click", () => {
   });
   botonesEleccionPC.classList.remove("opacity-50");
   botonesEleccionPC.src = "";
-
+  resultadoRonda.classList.add("d-none");
   btnReiniciarJuego.classList.add("d-none");
-  rondasJugadas.innerHTML = `<h5 class="text-center">Rondas</h5>`;
-  rondaUsuario.innerHTML = "";
-  rondaPC.innerHTML = "";
+
 });
 
 // Abrir el modal con instrucciones del juego
@@ -119,6 +112,6 @@ btnInfo.addEventListener("click", () => {
     <p class="mb-1">🔹En caso de empate, ninguno gana puntos.</p>
     <p class="mb-1">🔹Quien primero obtenga los 5 puntos, <strong>GANA 🏆</strong></p>
     `,
-    showConfirmButton: true, 
+    showConfirmButton: true,
   })
 });
