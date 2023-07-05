@@ -7,11 +7,11 @@ function juegaPC() {
   if (eleccionPC) {
     botonesEleccionPC.src = `./assets/img/${eleccionPC}.png`;
   }
-  return eleccionPC;
+  // return eleccionPC;
 }
 
 const compararJugadas = (partidaGanada) => {
-  fetch("./js/api.json")
+  fetch("./js/jugadas.json")
     .then((respuesta) => respuesta.json())
     .then((jugadas) => {
       partidaGanada = jugadas.some((jugada) => jugada.ganador == btnEleccionUsuario && jugada.perdedor == eleccionPC);
@@ -23,17 +23,17 @@ const compararJugadas = (partidaGanada) => {
         resultadoRonda.innerHTML = `<p class="fw-bold mb-0 text-center">Empate 😬</p>`;
       } else if (partidaGanada) {
         puntosUsuario++;
+        resultadoRonda.innerHTML = `<p class="fw-bold mb-0 text-center">Ganaste esta ronda 😎</p>`;
+        resultadoRonda.classList.remove("d-none");
         localStorage.setItem("puntos usuario", puntosUsuario);
         ptoUsuario.innerHTML = `<h5 class="fw-bolder mb-0 text-center">${localStorage.getItem("puntos usuario")}</h5>`;
-        resultadoRonda.classList.remove("d-none");
-        resultadoRonda.innerHTML = `<p class="fw-bold mb-0 text-center">Ganaste esta ronda 😎</p>`;
       } else {
         puntosPC++;
+        resultadoRonda.innerHTML = `<p class="fw-bold mb-0">PC ganó esta ronda 🦾</p>`;
+        resultadoRonda.classList.remove("d-none");
         localStorage.setItem("puntos pc", puntosPC);
         ptoPC.innerHTML = `<h5 class="fw-bolder mb-0">${localStorage.getItem("puntos pc")}</h5>`;
-        resultadoRonda.classList.remove("d-none");
-        resultadoRonda.innerHTML = `<p class="fw-bold mb-0">PC ganó esta ronda 🦾</p>`;
-      };  
+      };
     })
 };
 
@@ -41,6 +41,7 @@ const definirGanador = () => {
   if (puntosUsuario === 5) {
     botonesEleccion.forEach((btnEleccion) => {
       btnEleccion.classList.add("disabled");
+      console.log("LLEGASTE A LOS 5 PUNTOS")
     });
     botonesEleccionPC.classList.add("opacity-50");
     btnReiniciarJuego.classList.remove("d-none");
@@ -54,10 +55,10 @@ const definirGanador = () => {
       left top`
     });
 
-
   } else if (puntosPC === 5) {
     botonesEleccion.forEach((btnEleccion) => {
       btnEleccion.classList.add("disabled");
+      console.log("LA PC LLEGÓ A LOS 5 PUNTOS")
     });
     botonesEleccionPC.classList.add("opacity-50");
     btnReiniciarJuego.classList.remove("d-none");
@@ -107,9 +108,9 @@ btnInfo.addEventListener("click", () => {
     title: 'Cómo jugar',
     html: `
     <p class="mb-1">🔹Cada jugador tiene su turno para elegir: <br><strong>piedra, papel o tijera.</strong></p>
-    <p class="mb-1">🔹Piedra vence a tijera, papel vence a piedra y tijera vence a papel.</p>
-    <p class="mb-1">🔹En cada turno los jugadores ganan 1 punto.</p>
-    <p class="mb-1">🔹En caso de empate, ninguno gana puntos.</p>
+    <p class="mb-1">🔹<strong>Jugadas ganadoras:</strong><br> Piedra vence a tijera, papel vence a piedra y tijera vence a papel.</p>
+    <p class="mb-1">🔹Quien elija la jugada ganadora, suma 1 punto.</p>
+    <p class="mb-1">🔹En caso de empate, ninguno suma puntos.</p>
     <p class="mb-1">🔹Quien primero obtenga los 5 puntos, <strong>GANA 🏆</strong></p>
     `,
     showConfirmButton: true,

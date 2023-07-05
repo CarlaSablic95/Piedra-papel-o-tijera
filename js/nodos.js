@@ -3,8 +3,6 @@ let btnJugar = document.getElementById("btn-jugar");
 let btnOK = document.getElementsByClassName("swal2-input");
 let btnReiniciarJuego = document.getElementById("btn-reinicio");
 
-// let rondasJugadas = document.getElementById("contenedor-rondas");
-
 let resultadoRonda = document.getElementById("resultado-rondas");
 
 let aliasJugador = document.getElementById("alias");
