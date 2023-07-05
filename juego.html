@@ -75,6 +75,11 @@
       title: 'Alias',
       input: 'text',
       inputPlaceholder: 'Alias',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.getInput().focus();
+      },
+      allowEscapeKey: false,
       inputValidator: (value) => {
         return new Promise((resolve) => {
           if (value === '') {

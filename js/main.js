@@ -3,11 +3,16 @@ let puntosPC = 0;
 const opciones = ["piedra", "papel", "tijera"];
 
 function juegaPC() {
-  eleccionPC = opciones[Math.floor(Math.random() * 3)];
-  if (eleccionPC) {
-    botonesEleccionPC.src = `./assets/img/${eleccionPC}.png`;
-  }
-  // return eleccionPC;
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      eleccionPC = opciones[Math.floor(Math.random() * 3)];
+      if (eleccionPC) {
+        botonesEleccionPC.src = `./assets/img/${eleccionPC}.png`;
+      }
+      resolve(eleccionPC);
+    }, 300);
+  })
+  
 }
 
 const compararJugadas = (partidaGanada) => {
@@ -41,7 +46,6 @@ const definirGanador = () => {
   if (puntosUsuario === 5) {
     botonesEleccion.forEach((btnEleccion) => {
       btnEleccion.classList.add("disabled");
-      console.log("LLEGASTE A LOS 5 PUNTOS")
     });
     botonesEleccionPC.classList.add("opacity-50");
     btnReiniciarJuego.classList.remove("d-none");
@@ -52,13 +56,15 @@ const definirGanador = () => {
       backdrop: `
       rgb(0 0 0 / 40%)
       url("./assets/img/confetti.gif")
-      left top`
+      left top`,
+      showClass: {
+        popup: 'animate__animated animate__zoomIn'
+      }
     });
 
   } else if (puntosPC === 5) {
     botonesEleccion.forEach((btnEleccion) => {
       btnEleccion.classList.add("disabled");
-      console.log("LA PC LLEGÓ A LOS 5 PUNTOS")
     });
     botonesEleccionPC.classList.add("opacity-50");
     btnReiniciarJuego.classList.remove("d-none");
@@ -68,17 +74,20 @@ const definirGanador = () => {
       showConfirmButton: true,
       backdrop: `
       rgb(0 0 0 / 40%)
-      left top`
+      left top`,
+      showClass: {
+        popup: 'animate__animated animate__zoomIn'
+      }
     })
-
   }
 };
 
 const jugarPartida = () => {
   jugador.elegirOpcion((btnEleccionUsuario) => {
-    juegaPC();
-    compararJugadas();
-    definirGanador();
+    juegaPC().then((eleccionPC) => {
+      compararJugadas();
+      definirGanador();
+    });
   });
 };
 
