@@ -6,7 +6,7 @@ class Jugador {
   elegirOpcion(callback) {
     botonesEleccion.forEach((btnEleccion) => {
       btnEleccion.addEventListener("click", (e) => {
-        btnEleccionUsuario = e.currentTarget.id;
+        const btnEleccionUsuario = e.currentTarget.id;
         callback(btnEleccionUsuario);
       });
     });

@@ -9,9 +9,7 @@ let aliasJugador = document.getElementById("alias");
 let contenedorAlias = document.getElementById("contenedor-alias");
 
 let botonesEleccion = document.querySelectorAll(".btn-eleccion");
-let btnEleccionUsuario;
 
-let eleccionPC;
 let contenedorOpcionPC = document.getElementById("contenedor-opcion-pc");
 let botonesEleccionPC = document.getElementById("img-opcion-pc");
 
