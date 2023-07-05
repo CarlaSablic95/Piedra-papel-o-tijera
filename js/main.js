@@ -12,7 +12,7 @@ function juegaPC() {
       resolve(eleccionPC);
     }, 300);
   })
-  
+
 }
 
 const compararJugadas = (partidaGanada) => {
@@ -45,7 +45,7 @@ const compararJugadas = (partidaGanada) => {
 const definirGanador = () => {
   if (puntosUsuario === 5) {
     botonesEleccion.forEach((btnEleccion) => {
-      btnEleccion.classList.add("disabled");
+      btnEleccion.disabled= true;
     });
     botonesEleccionPC.classList.add("opacity-50");
     btnReiniciarJuego.classList.remove("d-none");
@@ -64,7 +64,7 @@ const definirGanador = () => {
 
   } else if (puntosPC === 5) {
     botonesEleccion.forEach((btnEleccion) => {
-      btnEleccion.classList.add("disabled");
+      btnEleccion.disabled= true;
     });
     botonesEleccionPC.classList.add("opacity-50");
     btnReiniciarJuego.classList.remove("d-none");
@@ -102,7 +102,7 @@ btnReiniciarJuego.addEventListener("click", () => {
   ptoPC.innerHTML = "0";
 
   botonesEleccion.forEach((btnEleccion) => {
-    btnEleccion.classList.remove("disabled");
+    btnEleccion.disabled= false;
   });
   botonesEleccionPC.classList.remove("opacity-50");
   botonesEleccionPC.src = "";

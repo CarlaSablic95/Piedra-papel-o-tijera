@@ -9,6 +9,7 @@ body {
     height: 100vh;
 }
 
+
 #eleccion {
     height: 9vh;
 }
@@ -71,13 +72,12 @@ body {
     width: 80px;
 }
 
-
 .img-opciones {
     width: 50px;
 }
 
 .card-pc {
-height: 100vh;
+    height: 100vh;
     background-color: #dbf3ff;
     border-radius: 0 !important;
 }
@@ -104,7 +104,10 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
 }
 
 @media (max-width: 768px) {
-    .card-pc, .card-usuario {
+    .card-usuario {
         height: 60vh;
+    }
+    .card-pc {
+        height: 40vh;
     }
 }
