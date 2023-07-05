@@ -9,6 +9,11 @@ body {
     height: 100vh;
 }
 
+.disabled {
+    cursor: not-allowed;
+    pointer-events:none;
+    filter: opacity(.5);
+}
 
 #eleccion {
     height: 9vh;

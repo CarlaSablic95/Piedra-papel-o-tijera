@@ -45,7 +45,7 @@ const compararJugadas = (partidaGanada) => {
 const definirGanador = () => {
   if (puntosUsuario === 5) {
     botonesEleccion.forEach((btnEleccion) => {
-      btnEleccion.disabled= true;
+      btnEleccion.classList.add("disabled");
     });
     botonesEleccionPC.classList.add("opacity-50");
     btnReiniciarJuego.classList.remove("d-none");
@@ -64,7 +64,7 @@ const definirGanador = () => {
 
   } else if (puntosPC === 5) {
     botonesEleccion.forEach((btnEleccion) => {
-      btnEleccion.disabled= true;
+      btnEleccion.classList.add("disabled");
     });
     botonesEleccionPC.classList.add("opacity-50");
     btnReiniciarJuego.classList.remove("d-none");
@@ -102,7 +102,7 @@ btnReiniciarJuego.addEventListener("click", () => {
   ptoPC.innerHTML = "0";
 
   botonesEleccion.forEach((btnEleccion) => {
-    btnEleccion.disabled= false;
+    btnEleccion.classList.remove("disabled");
   });
   botonesEleccionPC.classList.remove("opacity-50");
   botonesEleccionPC.src = "";
