@@ -1,1 +1,1 @@
-﻿# PreEntrega3-Sablic: Juego piedra, papel o tijera
+﻿# Juego piedra, papel o tijera
